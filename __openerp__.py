@@ -2,21 +2,13 @@
 {
     'name': "odoo-imppn",
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+    'summary': "Financial and Analytic Accounting",
+    'description': "Module build to export invoices (active and passive) to an accounting system format (python library)",
 
-    'description': """
-        Long description of module's purpose
-    """,
+    'author': "Mounir LAHSINI",
+    'website': "http://www.github.com/matteopolleschi/odoo-imppn",
 
-    'author': "Your Company",
-    'website': "http://www.yourcompany.com",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
-    # for the full list
-    'category': 'Uncategorized',
+    'category': 'Accounting & Finance',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
