@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_odoo-imppn_odoo-imppn,odoo-imppn.odoo-imppn,model_odoo-imppn_odoo-imppn,,1,0,0,0
+access_odooimppn_odooimppn,odooimppn.odooimppn,model_odooimppn_odooimppn,,1,0,0,0

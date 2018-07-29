@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.actions.act_window" id="Odooimppn_list_action">
+            <field name="name">Odoo imppn</field>
+            <field name="res_model">odooimppn.odooimppn</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Export accounting invoices test7</p>
+            </field>
+        </record>
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_odoo-imppn_menu" name="Odoo imppn"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="odoo-imppn_menu" name="Odoo imppn" parent="main_odoo-imppn_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent odoo-imppn_menu and *after* its
+             action Odooimppn_list_action -->
+        <menuitem id="Odooimppn_menu" name="Odoo imppn" parent="odoo-imppn_menu" action="Odooimppn_list_action"/>
+        <!-- Full id location:
+             action="Odooimppn_list_action"
+             It is not required when it is the same module -->
+    </data>
+</openerp>
