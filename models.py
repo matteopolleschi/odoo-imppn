@@ -5,6 +5,13 @@ from pyimppn import imppn_line
 import os
 import psycopg2
 
+
+class Companyimppn(models.Model):
+
+    _inherit = 'res.company'
+    x_teamsystem_id = fields.Char(string="Teamsystem id")
+
+
 class Odooimppn(models.Model):
     _name = 'odooimppn.odooimppn'
 
@@ -19,7 +26,7 @@ class Odooimppn(models.Model):
         cnx_g = None
         try:
             # Connecting python postgresql database
-            cnx = psycopg2.connect(host="http://localhost", port=5432, user="admin", password="odoo", dbname="db")
+            cnx = psycopg2.connect(host="localhost", port=5432, user="odoo", password="odoo", dbname="db")
             # Creating a cursor object to interact with postgresql db and assign it to a variable cursor
             cur = cnx.cursor()
             # Execute statement or query on db
@@ -48,7 +55,7 @@ class Odooimppn(models.Model):
         cnx_g = None
         try:
             # Connecting python postgresql database
-            cnx = psycopg2.connect(host="http://localhost", port=5432, user="admin", password="odoo", dbname="db")
+            cnx = psycopg2.connect(host="localhost", port=5432, user="odoo", password="odoo", dbname="db")
             # Creating a cursor object to interact with mysql db and assign it to a variable cursor
             cur = cnx.cursor()
             # Execute statement or query on db
@@ -246,6 +253,6 @@ class Odooimppn(models.Model):
             f.close()
 
 
-if __name__ == '__main__':
-	if odoo-imppn().alter_table_res_company() == true :odoo-imppn().import_accounting()
-	else : print "altering table res_company wasn't succesfull ..."
+# if __name__ == '__main__':
+#  	if Odooimppn().alter_table_res_company() == true : Odooimppn().import_accounting()
+#	else : print "altering table res_company wasn't succesfull ..."

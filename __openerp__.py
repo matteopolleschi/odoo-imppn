@@ -9,16 +9,20 @@
     'website': "http://www.github.com/matteopolleschi/odoo-imppn",
 
     'category': 'Accounting & Finance',
-    'version': '0.2.5',
+    'version': '0.5.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','account_accountant'],
+    'depends': [
+        'base',
+        'account_accountant',
+    ],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'templates.xml',
-        'views/odoo-imppn.xml',
+        'views/odoo-imppn_view.xml',
+        'views/company_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
