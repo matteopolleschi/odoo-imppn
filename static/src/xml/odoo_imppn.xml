@@ -1,0 +1,22 @@
+<template>
+<t t-name="OdooimppnView">
+    <div class="oe_odooimppnview_view">
+        <div class="oe_odooimppnview_buttons"/>
+        <table class="oe_odooimppnview_groups">
+        <tr class="oe_odooimppnview_groups_headers">
+            <td class="oe_odooimppnview_odooimppn_cell"><div/></td>
+        </tr>
+        <tr class="oe_odooimppnview_content-cont">
+            <td><div class="oe_odooimppnview_content"/></td>
+        </tr>
+        </table>
+    </div>
+</t>
+<div t-name="OdooimppnView.buttons" class="oe_odooimppnview_buttons">
+    <t t-if="widget.options.action_buttons !== false">
+            <button type="button" class="oe_odooimppnview_button_new oe_highlight">
+                <t t-esc="widget.options.create_text || _t('Export')"/>
+            </button>
+    </t>
+</div>
+</template>

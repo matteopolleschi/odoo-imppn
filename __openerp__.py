@@ -9,30 +9,29 @@
     'website': "http://www.github.com/matteopolleschi/odoo-imppn",
 
     'category': 'Accounting & Finance',
-    'version': '0.5.1',
-
+    'version': '1.1.3',
+    
     # any module necessary for this one to work correctly
-    'depends': [
-        'base',
-        'account_accountant',
-    ],
+    'depends': ['web','base','account_accountant'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'templates.xml',
-        'views/odoo-imppn_view.xml',
-        'views/company_view.xml',
+        'views/odoo_imppn.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo.xml',
+
+    # always loaded
+    'qweb' : [
+        'static/src/xml/*.xml',
     ],
+    
     # installation statue 
     'auto_install': False,
     'installable': True,
 
-    # module external dependencies
+     # module external dependencies
     'external_dependencies': {
         'python': [],
     },
