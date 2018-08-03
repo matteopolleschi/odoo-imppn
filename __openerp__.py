@@ -6,10 +6,10 @@
     'description': "Module build to export invoices (active and passive) to an accounting system format (python library)",
 
     'author': "Mounir LAHSINI",
-    'website': "http://www.github.com/matteopolleschi/odoo-imppn",
+    'website': "http://www.github.com/matteopolleschi/odoo_imppn",
 
     'category': 'Accounting & Finance',
-    'version': '1.1.3',
+    'version': '1.0.6',
     
     # any module necessary for this one to work correctly
     'depends': ['web','base','account_accountant'],
@@ -20,6 +20,7 @@
         'security/ir.model.access.csv',
         'templates.xml',
         'views/odoo_imppn.xml',
+        'views/company_imppn.xml',
     ],
 
     # always loaded

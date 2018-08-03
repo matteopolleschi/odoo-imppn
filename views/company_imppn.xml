@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <openerp>
+    <data>
+        <record model="ir.ui.view" id="company_teamsystem_id_form_view">
+            <field name="name">res.company.form.teamsystem_id</field>
+            <field name="model">res.company</field>
+            <field name="type">form</field>
+            <field name="priority" eval="2000"/>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='company_registry']" position="after">
+                    <field name="x_teamsystem_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
