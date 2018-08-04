@@ -31,7 +31,16 @@ class odooimppn(models.Model):
     _name = 'odoo_imppn.content'
     _description = 'Odoo imppn content'
 
-    def alter_table_res_company():
+    
+    @api.one
+    def test(self):
+    	q = open('IMPPN_tests.txt', "a+")
+        q.write('test test')
+        q.close()
+
+
+    @api.one
+    def alter_table_res_company(self):
         postgresql1 = "ALTER TABLE res_company ADD COLUMN x_teamsystem_id integer;"
         postgresql2 = "UPDATE res_company SET x_teamsystem_id = 5030 WHERE id = 1;"
         cnx_g = None
@@ -60,7 +69,8 @@ class odooimppn(models.Model):
                 cnx_g.close()
 
 
-    def select_form_account_invoice():
+    @api.one
+    def select_form_account_invoice(self):
         postgresql = "SELECT res_company.teamsystem_id, res_partner.name FROM res_company, account_invoice, res_partner " \
                " WHERE res_partner.id = account_invoice.partner_id AND res_company.id = 1 ;"
         cnx_g = None
@@ -83,8 +93,9 @@ class odooimppn(models.Model):
                 cnx_g.close()
 
 
-    def import_accounting():
-        result = select_form_account_invoice()
+	@api.one
+    def import_accounting(self):
+        result = odooimppn.select_form_account_invoice()
         for i in range(len(result)):
             result_string = imppn_line(
                 TRF_DITTA=str(result[i][0]),
@@ -256,13 +267,15 @@ class odooimppn(models.Model):
                 TRF_RIF_FATTURA="",
                 TRF_RISERVATO_B=""
             )
-            good = open(os.path.join(os.path.dirname(__file__), 'IMPPN_tests.txt'), 'r+').readlines()[0]
-            print good 
+			# test number 1 
+            # good = open(os.path.join(os.path.dirname(__file__), 'IMPPN_tests.txt'), 'r+').readlines()[0] 
             # self.assertEquals(result_string.rstrip('\r\n'), good)
+            # test number 2 
             f = open('IMPPN_tests.txt', "a+")
             f.write(result_string)
             f.close()
             
 # if __name__ == '__main__':
-#  	if Odooimppn().alter_table_res_company() == true : Odooimppn().import_accounting()
+odooimppn.test()
+#  	if odooimppn.alter_table_res_company() == true : odooimppn.import_accounting()
 #	else : print "altering table res_company wasn't succesfull ..."
