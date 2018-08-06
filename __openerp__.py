@@ -9,7 +9,7 @@
     'website': "http://www.github.com/matteopolleschi/odoo_imppn",
 
     'category': 'Accounting & Finance',
-    'version': '1.1.1',
+    'version': '1.0',
     
     # any module necessary for this one to work correctly
     'depends': ['web','base','account_accountant'],

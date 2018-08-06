@@ -15,61 +15,31 @@ import os
 import logging
 _logger = logging.getLogger(__name__)
 
+class companyimppn(models.Model):
+    _name = 'res.company'
+    _inherit = 'res.company'
+
+    # x_teamsystem_id = fields.integer('Teamsystem id')
+    _column = {'x_teamsystem_id': fields.integer('Teamsystem id', help="this field is related to the odoo_imppn module")}
+
 class view(osv.osv):
     _inherit = ['ir.ui.view']
 
     def __init__(self, pool, cr):
         super(view, self).__init__(pool, cr)
         super(view, self)._columns['type'].selection.append(('odooimppnview','OdooimppnView'))
-
-class companyimppn(models.Model):
-    _inherit = ['res.company']
-
-    x_teamsystem_id = fields.Integer(string="Teamsystem id")
-
+ 
 class odooimppn(models.Model):
     _name = 'odoo_imppn.content'
     _description = 'Odoo imppn content'
 
     
-    @api.one
     def test(self):
     	q = open('IMPPN_tests.txt', "a+")
         q.write('test test')
         q.close()
 
 
-    @api.one
-    def alter_table_res_company(self):
-        postgresql1 = "ALTER TABLE res_company ADD COLUMN x_teamsystem_id integer;"
-        postgresql2 = "UPDATE res_company SET x_teamsystem_id = 5030 WHERE id = 1;"
-        cnx_g = None
-        try:
-            # Connecting python postgresql database
-            cnx = psycopg2.connect(host="localhost", port=5432, user="odoo", password="odoo", dbname="db")
-            # Creating a cursor object to interact with postgresql db and assign it to a variable cursor
-            cur = cnx.cursor()
-            # Execute statement or query on db
-            cur.execute(postgresql1)
-            # committing changes to the table
-            cnx.commit()
-            # Creating a cursor object to interact with mysql db and assign it to a variable cursor
-            cur = cnx.cursor()
-            # Execute statement or query on db
-            cur.execute(postgresql2)
-            # committing changes to the table
-            cnx.commit()
-            # close communication with the database
-            cur.close()
-            return true
-        except (Exception, psycopg2.DatabaseError) as error:
-            print(error)
-        finally:
-            if cnx_g is not None:
-                cnx_g.close()
-
-
-    @api.one
     def select_form_account_invoice(self):
         postgresql = "SELECT res_company.teamsystem_id, res_partner.name FROM res_company, account_invoice, res_partner " \
                " WHERE res_partner.id = account_invoice.partner_id AND res_company.id = 1 ;"
@@ -93,9 +63,8 @@ class odooimppn(models.Model):
                 cnx_g.close()
 
 
-	@api.one
     def import_accounting(self):
-        result = odooimppn.select_form_account_invoice()
+        result = select_form_account_invoice()
         for i in range(len(result)):
             result_string = imppn_line(
                 TRF_DITTA=str(result[i][0]),
@@ -268,14 +237,12 @@ class odooimppn(models.Model):
                 TRF_RISERVATO_B=""
             )
 			# test number 1 
-            # good = open(os.path.join(os.path.dirname(__file__), 'IMPPN_tests.txt'), 'r+').readlines()[0] 
-            # self.assertEquals(result_string.rstrip('\r\n'), good)
+            good = open(os.path.join(os.path.dirname(__file__), 'IMPPN_tests.txt'), 'r+').readlines()[0] 
+            self.assertEquals(result_string.rstrip('\r\n'), good)
             # test number 2 
-            f = open('IMPPN_tests.txt', "a+")
-            f.write(result_string)
-            f.close()
+            # f = open('IMPPN_tests.txt', "a+")
+            # f.write(result_string)
+            # f.close()
             
-# if __name__ == '__main__':
-odooimppn.test()
-#  	if odooimppn.alter_table_res_company() == true : odooimppn.import_accounting()
-#	else : print "altering table res_company wasn't succesfull ..."
+# test()
+# import_accounting()
