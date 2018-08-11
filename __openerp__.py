@@ -12,21 +12,19 @@
     'version': '1.0',
     
     # any module necessary for this one to work correctly
-    'depends': ['web','base','account_accountant'],
+    'depends': ['base','account_accountant'],
 
     # always loaded
     'data': [
-        'security/security.xml',
-        'security/ir.model.access.csv',
+        #'security/security.xml',
+        #'security/ir.model.access.csv',
         'templates.xml',
-        'views/odoo_imppn.xml',
+        'views/odoo_imppn_view.xml',
         'views/company_imppn.xml',
     ],
 
-    # always loaded
-    'qweb' : [
-        'static/src/xml/*.xml',
-    ],
+    # only loaded in demonstration mode
+    'demo': ['demo.xml'],
     
     # installation statue 
     'auto_install': False,

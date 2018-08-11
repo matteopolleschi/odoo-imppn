@@ -1,38 +1,22 @@
 <openerp>
     <data>
-    	        
-        <menuitem name="Odoo imppn" id="odoo_imppn.content" />
-        <menuitem name="Module" id="odoo_imppn.content1" parent="odoo_imppn.content"/>
-
-		<!--Instructor Calendar-->
-        <record model="ir.ui.view" id="odoo_imppn">
-            <field name="name">odoo_imppn</field>
-            <field name="model">odoo_imppn.content</field>
-            <field name="arch" type="xml">
-                <odooimppnview>
-                	<templates>
-	                    <t t-name="odooimppn-content">
-		                	<div class="col-md-12">
-                                <h1>Odoo Imppn Module</h1>
-                                <h3> When downloading this module a filed has been added to your module company, now you are able to edit your company infos and add a value to the field Teamsystem id.</h3>
-                                <h3> when pressing the button Export your account invoices will be exported using a python libray to a text file stored in the module it self.</h3>
-                                <h3> PS : please add the a value to the Teamsystem id field before exporting data.</h3>
-                            </div>
-	                	</t>
-                	</templates>
-                </odooimppnview>
-            </field>
-        </record>
-
-        <record model="ir.actions.act_window" id="odoo_imppn_cont">
-            <field name="name">Odoo imppn</field>
-            <field name="res_model">odoo_imppn.content</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">odooimppnview</field>
-        </record>
-        
-        <menuitem name="Odoo imppn" id="odoo_imppn.content2" action="odoo_imppn_cont" parent="odoo_imppn.content1"/>
-        
+        <!-- <template id="listing"> -->
+        <!--   <ul> -->
+        <!--     <li t-foreach="objects" t-as="object"> -->
+        <!--       <a t-attf-href="{{ root }}/objects/{{ object.id }}"> -->
+        <!--         <t t-esc="object.display_name"/> -->
+        <!--       </a> -->
+        <!--     </li> -->
+        <!--   </ul> -->
+        <!-- </template> -->
+        <!-- <template id="object"> -->
+        <!--   <h1><t t-esc="object.display_name"/></h1> -->
+        <!--   <dl> -->
+        <!--     <t t-foreach="object._fields" t-as="field"> -->
+        <!--       <dt><t t-esc="field"/></dt> -->
+        <!--       <dd><t t-esc="object[field]"/></dd> -->
+        <!--     </t> -->
+        <!--   </dl> -->
+        <!-- </template> -->
     </data>
-
 </openerp>

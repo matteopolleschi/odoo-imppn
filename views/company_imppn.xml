@@ -9,7 +9,7 @@
             <field name="priority" eval="50"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='company_registry']" position="after">
-                    <field name="x_teamsystem_id"/>
+                    <field name="x_teamsystem_id" string="Teamsystem id"/>
                 </xpath>
             </field>
         </record>

@@ -1,0 +1,30 @@
+<openerp>
+    <data>
+
+	<record model="ir.ui.view" id="view_odoo_imppn_form">
+	    <field name="name">Odoo imppn</field>
+	    <field name="model">odoo_imppn.odoo_imppn</field>
+	    <field name="type">form</field>
+	    <field name="arch" type="xml">
+	        <form string="Button record">
+		    <header>
+		    	<button string="Import" type="object" name="test_text_file" class="oe_highlight"/>
+		    </header>
+		</form>
+	    </field>
+	</record>
+
+        <record model="ir.actions.act_window" id="odoo_imppn_action">
+            <field name="name">Create new record</field>
+            <field name="res_model">odoo_imppn.odoo_imppn</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name='view_id' ref='view_odoo_imppn_form'/>
+        </record>
+
+        <menuitem id="main_odoo_imppn_menu" name="Odoo imppn"/>
+        <menuitem id="odoo_imppn_menu" name="Odoo imppn" parent="main_odoo_imppn_menu"/>
+        <menuitem id="menu_detail_logging" action="odoo_imppn_action" parent="odoo_imppn_menu" sequence="20"/>
+    
+    </data>
+</openerp>
