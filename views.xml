@@ -1,0 +1,17 @@
+<openerp>
+    <data>
+        <menuitem name="Odoo imppn" id="odoo_imppn.content"/>
+        <menuitem name="Module" id="odoo_imppn.content1" parent="odoo_imppn.content"/>
+
+        <record id="res_company_view_form_inherited" model="ir.ui.view">
+            <field name="name">res.company form inherited</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="company_registry" position="after">
+                    <field name="teamsystem_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

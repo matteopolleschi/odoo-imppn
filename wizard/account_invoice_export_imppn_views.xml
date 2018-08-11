@@ -1,0 +1,32 @@
+<openerp>
+    <data>
+        <record id="account_invoice_export_imppn_view_form_wizard" model="ir.ui.view">
+            <field name="name">account.invoice.export.imppn form wizard</field>
+            <field name="model">account.invoice.export.imppn</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4" string="Export invoices from this date range">
+                        <field name="start"/>
+                        <field name="end"/>
+                    </group>
+                    <footer>
+                        <button name="download" string="Download" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" name="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_account_invoice_export_imppn" model="ir.actions.act_window">
+            <field name="name">Download IMPPN</field>
+            <field name="res_model">account.invoice.export.imppn</field>
+            <field name="view_type">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="account_invoice_export_imppn_view_form_wizard"/>
+        </record>
+
+        <menuitem name="Odoo imppn" id="odoo_imppn.content2" action="action_account_invoice_export_imppn"
+                  parent="odoo_imppn.content1"/>
+
+    </data>
+</openerp>
