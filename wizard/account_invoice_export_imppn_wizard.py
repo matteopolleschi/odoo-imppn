@@ -66,6 +66,7 @@ class account_invoice_export_imppn(models.TransientModel):
                 values['TRF-IMPONIB' + index] = line.price_subtotal
                 values['TRF-ALIQ' + index] = vat_code
                 values['TRF-IMPOSTA' + index] = vat_amount
+                values['TRF-CONTO-RIC' + index] = line.account_id.code
 
                 assert invoice_line_total_tax == invoice.amount_tax, "That the invoice number %s has unmatched taxes." % invoice.number
             row = imppn_line(**values)
