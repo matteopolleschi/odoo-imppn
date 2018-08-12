@@ -7,10 +7,12 @@
 	    <field name="type">form</field>
 	    <field name="arch" type="xml">
 	        <form string="Button record">
-		    <header>
-		    	<button string="Import" type="object" name="test_text_file" class="oe_highlight"/>
-		    </header>
-		</form>
+		    	<header>
+		    		<button string="Import" type="object" name="import_accounting" class="oe_highlight"/>
+		    		<p></p>
+		    		<h3> ^ this button help you import all account invoices using a python library into a text file (IMPPN.txt) </h3>
+		    	</header>
+			</form>
 	    </field>
 	</record>
 

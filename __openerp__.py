@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Odoo imppn",
+    'sequence': 2,
 
     'summary': "Financial and Analytic Accounting",
     'description': "Module build to export invoices (active and passive) to an accounting system format (python library)",
@@ -12,7 +13,7 @@
     'version': '1.0',
     
     # any module necessary for this one to work correctly
-    'depends': ['base','account_accountant'],
+    'depends': ['base','account','account_accountant'],
 
     # always loaded
     'data': [
@@ -29,6 +30,7 @@
     # installation statue 
     'auto_install': False,
     'installable': True,
+    'application': True,
 
      # module external dependencies
     'external_dependencies': {

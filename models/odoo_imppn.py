@@ -13,7 +13,7 @@ class company_imppn(models.Model):
 
 class odoo_imppn(models.Model):
     _name = 'odoo_imppn.odoo_imppn'
-    name = fields.Char(required=True)
+    # name = fields.Char(required=True,default='Click on button!')
     
     @api.multi
     def test_text_file(self):
@@ -21,17 +21,17 @@ class odoo_imppn(models.Model):
         path = os.path.expanduser('./etc/odoo/addons/odoo_imppn/IMPPN.txt')
         # fileIMPPN = open(os.path.join(os.path.dirname(__file__), 'IMPPN.txt'), 'r+') 
         fileIMPPN = open(path, 'a')
-        fileIMPPN.write(str(result))
+        fileIMPPN.write(results)
         fileIMPPN.close()
 
     @api.multi
     def select_form_account_invoice(self):
         postgresql = "SELECT res_company.x_teamsystem_id, res_partner.name FROM res_company, account_invoice, res_partner " \
                " WHERE res_partner.id = account_invoice.partner_id AND res_company.id = 1 ;"
-        cnx_g = None
+        cnx = None
         try:
             # Connecting python postgresql database
-            cnx = psycopg2.connect(host="localhost", port=5432, user="odoo", password="odoo", dbname="db")
+            cnx = psycopg2.connect(host="172.17.0.2", port=5432, user="odoo", password="odoo", dbname="db")
             # Creating a cursor object to interact with mysql db and assign it to a variable cursor
             cur = cnx.cursor()
             # Execute statement or query on db
@@ -40,12 +40,12 @@ class odoo_imppn(models.Model):
             results = cur.fetchall()
             # close communication with the database
             cur.close()
-            return cnx
+            return results
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
         finally:
-           if cnx_g is not None:
-                cnx_g.close()
+           if cnx is not None:
+                cnx.close()
     
     @api.multi
     def import_accounting(self):
@@ -221,7 +221,7 @@ class odoo_imppn(models.Model):
                 TRF_RIF_FATTURA="",
                 TRF_RISERVATO_B=""
             )
-            path = os.path.expanduser('./etc/odoo/addons/odoo_imppn3/IMPPN.txt')
+            path = os.path.expanduser('./etc/odoo/addons/odoo_imppn/IMPPN.txt')
             fileIMPPN = open(path, 'r+')
             fileIMPPN.write(result_string.rstrip('\r\n'))
             fileIMPPN.close()
