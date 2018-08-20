@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import base64
+import pyimppn
 
-from openerp import models, fields, api, _
-from openerp.exceptions import Warning
-from pyimppn import imppn_line
+from odoo import models, fields, api, exceptions, _
+from odoo.exceptions import ValidationError
 
 
 class account_invoice_export_imppn(models.TransientModel):
@@ -42,7 +42,7 @@ class account_invoice_export_imppn(models.TransientModel):
             }
 
             if len(invoice.invoice_line) > 8:
-                raise Warning(_('Max 8 lines allowed'))
+                raise exceptions.ValidationError(_('Max 8 lines allowed'))
 
             invoice_line_total_tax = 0.0
             for i, line in enumerate(invoice.invoice_line):
