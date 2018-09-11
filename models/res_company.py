@@ -6,5 +6,10 @@
 #
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 #-
-from . import pyimppn
-from . import account_invoice_export_imppn_wizard
+from openerp import models, fields, api
+
+
+class res_company(models.Model):
+    _inherit = 'res.company'
+
+    teamsystem_id = fields.Integer('Team System ID')

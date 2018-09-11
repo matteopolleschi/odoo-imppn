@@ -5,7 +5,8 @@
             <field name="model">account.invoice.export.imppn</field>
             <field name="arch" type="xml">
                 <form>
-                    <group col="4" string="Export invoices from this date range">
+                    <group col="2" string="Export invoices from this date range">
+                        <field name="company_id"/>
                         <field name="start"/>
                         <field name="end"/>
                     </group>
@@ -25,8 +26,12 @@
             <field name="view_id" ref="account_invoice_export_imppn_view_form_wizard"/>
         </record>
 
-        <menuitem name="Odoo imppn" id="odoo_imppn.content2" action="action_account_invoice_export_imppn"
-                  parent="odoo_imppn.content1"/>
+        <menuitem name="Data Exchange" id="odoo_imppn.content"
+                  parent="account.menu_finance_periodical_processing"/>
+
+        <menuitem name="Odoo imppn" id="odoo_imppn.content1"
+                  action="action_account_invoice_export_imppn"
+                  parent="odoo_imppn.content"/>
 
     </data>
 </openerp>

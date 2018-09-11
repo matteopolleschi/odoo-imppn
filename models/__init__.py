@@ -6,5 +6,4 @@
 #
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 #-
-from . import pyimppn
-from . import account_invoice_export_imppn_wizard
+from . import res_company
